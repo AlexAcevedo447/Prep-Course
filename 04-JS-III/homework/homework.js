@@ -84,9 +84,9 @@ function arrayContiene(array, elemento) {
   // Devuelve "true" si está, o "false" si no está
   // Tu código:
 
-  var found = array.find(elemento);
+  var found = array.find(e=> e == elemento);
 
-  if(found !== undefined){
+  if(found == elemento){
     return true;
   }else{
     return false;
@@ -100,7 +100,7 @@ function agregarNumeros(numeros) {
   // Tu código:
   acumulado = 0;
   for(i = 0; i < numeros.length; i++){
-    acumulado = acumulado + array[i];
+    acumulado = acumulado + numeros[i];
   }
 
   return acumulado;
@@ -115,7 +115,7 @@ function promedioResultadosTest(resultadosTest) {
   let contador = 0;
   let resultado = 0;
   for(var i = 0; i < resultadosTest.length; i++){
-    acumulador = acumulado + resultadosTest[i];
+    acumulador = acumulador + resultadosTest[i];
     contador = contador +1;
   }
 
@@ -129,6 +129,16 @@ function numeroMasGrande(numeros) {
   // "numeros" debe ser una matriz de enteros (int/integers)
   // Devuelve el número más grande
   // Tu código:
+
+  var numeroMasGrande = 0;
+
+  for  (var i = 0; i < numeros.length; i++){
+    if(numeros[i]>numeroMasGrande){
+      numeroMasGrande = numeros[i];
+    }
+  }
+
+  return numeroMasGrande;
 }
 
 
@@ -136,6 +146,17 @@ function multiplicarArgumentos() {
   // Usa la palabra clave `arguments` para multiplicar todos los argumentos y devolver el producto
   // Si no se pasan argumentos devuelve 0. Si se pasa un argumento, simplemente devuélvelo
   // Escribe tu código aquí:
+  var args = 1;
+
+  if(arguments.length == 0){
+    return 0;
+  }else{
+    for (var i = 0; i < arguments.length; i++){
+      args *= arguments[i]
+    }
+  }
+
+  return args;
 }
 
 
@@ -143,6 +164,14 @@ function cuentoElementos(arreglo){
   //Realiza una función que retorne la cantidad de los elementos del arreglo cuyo valor es mayor a 18.
   //Escribe tu código aquí
 
+  var encontrados = arreglo.filter(e => e > 18);
+  var found = 0;
+
+  for (var i = 0; i < encontrados.length; i++){
+    found += 1;
+  }
+
+  return found;
 }
 
 
@@ -150,8 +179,15 @@ function diaDeLaSemana(numeroDeDia) {
   //Suponga que los días de la semana se codifican como 1 = Domingo, 2 = Lunes y así sucesivamente. 
   //Realiza una función que dado el número del día de la semana, retorne: Es fin de semana
   //si el día corresponde a Sábado o Domingo y “Es dia Laboral” en caso contrario. 
-  //Escribe tu código aquí   
+  //Escribe tu código aquí  
   
+  if(numeroDeDia < 1 || numeroDeDia > 7){
+    return "Error";
+  }else if(numeroDeDia == 1 || numeroDeDia == 7){
+    return "Es fin de semana";
+  }else{
+    return "Es dia Laboral";
+  }
 } 
 
 
